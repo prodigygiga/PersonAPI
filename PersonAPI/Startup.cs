@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PersonAPI
+namespace PersonDirectory.Presentation.WebApi
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace PersonAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PersonAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PersonDirectory", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace PersonAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonDirectory v1"));
             }
 
             app.UseHttpsRedirection();
