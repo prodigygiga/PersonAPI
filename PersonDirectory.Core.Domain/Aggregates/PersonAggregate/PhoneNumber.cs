@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace PersonDirectory.Core.Domain.Aggregates.PersonAggregate
 {
-    public class PhoneNumber : ValueObject
+    public class PhoneNumber : Entity
     {
         public string Number { get; private set; }
         public PhoneNumberType PhoneNumberType { get; private set; }
-        public PhoneNumber(string number, PhoneNumberType phoneNumberType) =>(Number,PhoneNumberType) = (number, phoneNumberType);
-        protected override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return Number;
-            yield return PhoneNumberType;
-        }
+        public int PersonId { get; private set; }
+        public Person Person { get; private set; }
+        protected PhoneNumber() { }
+        public PhoneNumber(string number, PhoneNumberType phoneNumberType,int personId) =>(Number,PhoneNumberType,PersonId) = (number, phoneNumberType,personId);
     }
 }
