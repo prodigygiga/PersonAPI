@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDirectory.Core.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDirectory.Infrastructure.Persistence", "PersonDirectory.Infrastructure.Persistence\PersonDirectory.Infrastructure.Persistence.csproj", "{6F94BA87-5AC1-46B7-A8BB-AD2F9673E911}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDirectory.Application", "PersonDirectory.Application\PersonDirectory.Application.csproj", "{4F2BF84D-B6FA-4276-8D1B-2BFECDB56E31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{6F94BA87-5AC1-46B7-A8BB-AD2F9673E911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F94BA87-5AC1-46B7-A8BB-AD2F9673E911}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F94BA87-5AC1-46B7-A8BB-AD2F9673E911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F2BF84D-B6FA-4276-8D1B-2BFECDB56E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F2BF84D-B6FA-4276-8D1B-2BFECDB56E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F2BF84D-B6FA-4276-8D1B-2BFECDB56E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F2BF84D-B6FA-4276-8D1B-2BFECDB56E31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{2241889F-143F-43C3-9C7E-F8A078B2C97D} = {CD097A3B-29D9-40B4-8805-F3FF02076F19}
 		{3C7A390C-79B7-44E7-9DC4-2FF026082407} = {8E3E4D8D-4731-4509-AD54-69BDD4F67B0D}
 		{6F94BA87-5AC1-46B7-A8BB-AD2F9673E911} = {3F2ACF9E-064A-4A68-8CB0-B7ABF4FCC275}
+		{4F2BF84D-B6FA-4276-8D1B-2BFECDB56E31} = {FBF97DB1-F1DB-4637-9DA9-72CCA845F6E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F36D4E2-2C09-4EB5-93F6-AD795635635E}

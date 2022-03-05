@@ -28,7 +28,7 @@ namespace PersonDirectory.Core.Domain.Aggregates.PersonAggregate
             relations = new HashSet<PersonRelation>();
         }
 
-        public Person(string firstName, string lastName, string privateNumber,Gender gender, DateTime birthDate, int cityId,string picturePath)
+        public Person(string firstName, string lastName, string privateNumber,Gender gender, DateTime birthDate, int cityId,string picturePath):this()
         {
             FirstName = firstName;
             LastName = lastName;
@@ -37,6 +37,10 @@ namespace PersonDirectory.Core.Domain.Aggregates.PersonAggregate
             BirthDate = birthDate;
             CityId = cityId;
             PicturePath = picturePath;
+        }
+        public void AddPhoneNumber(PhoneNumber phoneNumber)
+        {
+            phoneNumbers.Add(phoneNumber);
         }
     }
 }

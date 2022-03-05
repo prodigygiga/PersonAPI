@@ -6,7 +6,7 @@ namespace Domain.Core.Shared
 {
     public abstract class Entity
     {
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.Now;
         public Guid CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public Guid ModifiedBy { get; set; }

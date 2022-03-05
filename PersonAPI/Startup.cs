@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PersonDirectory.Application;
 using PersonDirectory.Infrastructure.Persistence;
+using PersonDirectory.Presentation.WebApi.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +35,7 @@ namespace PersonDirectory.Presentation.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PersonDirectory", Version = "v1" });
             });
+            services.AddApplicatonLayer(Configuration);
             services.AddPersistenceLayer(Configuration);
         }
 
@@ -45,7 +48,7 @@ namespace PersonDirectory.Presentation.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonDirectory v1"));
             }
-
+            app.UseMiddleware<ExceptionHandler>();
             app.UseHttpsRedirection();
 
             app.UseRouting();
