@@ -11,5 +11,8 @@ namespace PersonDirectory.Core.Domain.Interfaces
     public interface IPersonRepository:IRepository<Person>
     {
         public Task<Person> GetPersonByIdAsync(int id);
+        public Task<PersonRelation> GetRelationByPersonAndRelatedPersonIdAsync(int personId, int relatedPersonId);
+        public Task AddRelatedPerson(PersonRelation relation);
+        public Task DeleteRelation(PersonRelation relation);
     }
 }

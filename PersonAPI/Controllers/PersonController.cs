@@ -37,6 +37,18 @@ namespace PersonRegister.WebApi.Controllers
             await mediator.Send(request);
             return Ok();
         }
+        [HttpPost("Relation")]
+        public async Task<IActionResult> AddRelation([FromForm] AddPersonRelationCommand request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
+        [HttpDelete("Relation")]
+        public async Task<IActionResult> RemoveRelation([FromForm] DeletePersonRelationCommand request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
 
 
 
