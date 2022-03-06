@@ -24,10 +24,10 @@ namespace PersonDirectory.Application.Features.People.Commands
 
         public async Task<Unit> Handle(DeletePersonRelationCommand request, CancellationToken cancellationToken)
         {
-            if (!await uow.PersonRepository.CheckAsync(x=>x.Id == request.PersonId && x.DeleteDate == null))
+            if (!await uow.PersonRepository.CheckAsync(x=>x.Id == request.PersonId))
             {
                 throw new DataNotFoundException("პიროვნება გადმოცემულ Id-ზე არ არსებობს");
-            }else if (!await uow.PersonRepository.CheckAsync(x => x.Id == request.RelatedPersonId && x.DeleteDate == null))
+            }else if (!await uow.PersonRepository.CheckAsync(x => x.Id == request.RelatedPersonId))
             {
                 throw new DataNotFoundException("დაკავშირებული პიროვნება გადმოცემულ Id-ზე არ არსებობს");
             }

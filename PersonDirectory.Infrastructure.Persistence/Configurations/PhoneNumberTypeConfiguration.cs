@@ -14,6 +14,7 @@ namespace PersonDirectory.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PhoneNumber> builder)
         {
             builder.ToTable("PhoneNumbers", "Person");
+            builder.HasQueryFilter(x => x.DeleteDate == null);
             builder
                 .Property(x => x.Number)
                 .HasMaxLength(50)

@@ -14,6 +14,7 @@ namespace PersonDirectory.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.ToTable("People", "Person");
+            builder.HasQueryFilter(x => x.DeleteDate == null);
             builder.Ignore(x => x.DomainEvents);
             builder.Property(x => x.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(x => x.LastName).HasMaxLength(50).IsRequired();

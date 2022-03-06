@@ -17,13 +17,11 @@
     <Compile Remove="Features\People\Commands\DeleteRelatedPersonCommand.cs" />
     <Compile Remove="Features\People\Commands\UploadPhotoCommand.cs" />
     <Compile Remove="Features\People\Queries\GetPeopleQuery.cs" />
-    <Compile Remove="Features\People\Queries\GetPersonByIdQuery.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Features\Cities\Commands\" />
     <Folder Include="Features\Cities\Queries\" />
-    <Folder Include="Features\People\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

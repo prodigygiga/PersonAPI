@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PersonDirectory.Application.Features.People.Commands;
+using PersonDirectory.Application.Features.People.Queries;
 using System.Threading.Tasks;
 
 namespace PersonRegister.WebApi.Controllers
@@ -48,6 +49,12 @@ namespace PersonRegister.WebApi.Controllers
         {
             await mediator.Send(request);
             return Ok();
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await mediator.Send(new GetPersonByIdQuery { Id=id});
+            return Ok(result);
         }
 
 

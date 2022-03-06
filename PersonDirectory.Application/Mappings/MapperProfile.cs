@@ -34,17 +34,17 @@ namespace PersonDirectory.Application.Mappings
 
             CreateMap<PhoneNumber, PhoneNumberDTO>();
 
-            //CreateMap<PersonRelation, RelatedPersonDTO>()
-            //    .ForMember(dto => dto.Id, opt => opt.MapFrom(entity => entity.RelatedPerson.Id))
-            //    .ForMember(dto => dto.FirstName, opt => opt.MapFrom(entity => entity.RelatedPerson.FirstName))
-            //    .ForMember(dto => dto.LastName, opt => opt.MapFrom(entity => entity.RelatedPerson.LastName))
-            //    .ForMember(dto => dto.Gender, opt => opt.MapFrom(entity => entity.RelatedPerson.Gender))
-            //    .ForMember(dto => dto.Pn, opt => opt.MapFrom(entity => entity.RelatedPerson.Pn))
-            //    .ForMember(dto => dto.BirthDate, opt => opt.MapFrom(entity => entity.RelatedPerson.BirthDate))
-            //    .ForMember(dto => dto.CityId, opt => opt.MapFrom(entity => entity.RelatedPerson.CityId))
-            //    .ForMember(dto => dto.City, opt => opt.MapFrom(entity => entity.RelatedPerson.City.Name))
-            //    .ForMember(dto => dto.PhotoPath, opt => opt.MapFrom(entity => entity.RelatedPerson.PhotoPath))
-            //    .ForMember(dto => dto.Phones, opt => opt.MapFrom(entity => entity.RelatedPerson.Phones));
+            CreateMap<PersonRelation, RelatedPersonDTO>()
+                .ForMember(dto => dto.Id, opt => opt.MapFrom(entity => entity.RelatedPerson.Id))
+                .ForMember(dto => dto.PrivateNumber, opt => opt.MapFrom(entity => entity.RelatedPerson.PrivateNumber))
+                .ForMember(dto => dto.FirstName, opt => opt.MapFrom(entity => entity.RelatedPerson.FirstName))
+                .ForMember(dto => dto.LastName, opt => opt.MapFrom(entity => entity.RelatedPerson.LastName))
+                .ForMember(dto => dto.Gender, opt => opt.MapFrom(entity => entity.RelatedPerson.Gender))
+                .ForMember(dto => dto.CityId, opt => opt.MapFrom(entity => entity.RelatedPerson.CityId))
+                .ForMember(dto => dto.City, opt => opt.MapFrom(entity => entity.RelatedPerson.City.Name))
+                .ForMember(dto => dto.BirthDate, opt => opt.MapFrom(entity => entity.RelatedPerson.BirthDate))
+                .ForMember(dto => dto.PicturePath, opt => opt.MapFrom(entity => entity.RelatedPerson.PicturePath))
+                .ForMember(dto => dto.PhoneNumbers, opt => opt.MapFrom(entity => entity.RelatedPerson.PhoneNumbers));
 
 
         }

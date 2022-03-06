@@ -61,5 +61,9 @@ namespace PersonDirectory.Core.Domain.Aggregates.PersonAggregate
         {
             phoneNumbers.Add(phoneNumber);
         }
+        public void AddRelation(PersonRelation relation)
+        {
+            relations.Add(relation);
+        }
     }
 }

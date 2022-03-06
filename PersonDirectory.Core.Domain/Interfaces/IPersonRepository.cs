@@ -14,5 +14,6 @@ namespace PersonDirectory.Core.Domain.Interfaces
         public Task<PersonRelation> GetRelationByPersonAndRelatedPersonIdAsync(int personId, int relatedPersonId);
         public Task AddRelatedPerson(PersonRelation relation);
         public Task DeleteRelation(PersonRelation relation);
+
     }
 }

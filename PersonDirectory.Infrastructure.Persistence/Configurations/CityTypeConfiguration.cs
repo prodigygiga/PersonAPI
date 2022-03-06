@@ -14,6 +14,7 @@ namespace PersonDirectory.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<City> builder)
         {
             builder.ToTable(nameof(City), "Common");
+            builder.HasQueryFilter(x => x.DeleteDate == null);
             builder.Ignore(x => x.DomainEvents);
             builder
                 .Property(x => x.Id)

@@ -16,5 +16,6 @@ namespace PersonDirectory.Core.Domain.Aggregates.PersonAggregate
         public RelationType RelationType { get; private set; }
         protected PersonRelation() { }
         public PersonRelation(int personId, int relatedPersonId, RelationType relationType) => (PersonId, RelatedPersonId,RelationType) = (personId,relatedPersonId,relationType);
+        public PersonRelation(int personId,Person person, int relatedPersonId,Person relatedPerson, RelationType relationType) => (PersonId,Person, RelatedPersonId,RelatedPerson, RelationType) = (personId,person, relatedPersonId,relatedPerson, relationType);
     }
 }
