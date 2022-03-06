@@ -19,8 +19,14 @@ namespace PersonRegister.WebApi.Controllers
             await mediator.Send(request);
             return Created("", request);
         }
+        [HttpPut]
+        public async Task<IActionResult> Update([FromForm] UpdatePersonCommand request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
 
-        
+
 
     }
 }

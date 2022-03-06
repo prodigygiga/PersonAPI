@@ -27,7 +27,7 @@ namespace PersonDirectory.Application.Features.People.Commands
                 request.BirthDate,
                 request.CityId,
                 null);
-            
+            person.CreateDate = DateTime.Now;
             foreach(var phNum in request.PhoneNumbers)
             {
                 person.AddPhoneNumber(new PhoneNumber(phNum.Number, Enumeration.FromValue<PhoneNumberType>(phNum.NumberTypeId),person.Id));

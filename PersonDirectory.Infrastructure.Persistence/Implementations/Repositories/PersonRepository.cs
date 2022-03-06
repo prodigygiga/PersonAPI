@@ -10,6 +10,15 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations.Repositorie
         {
 
         }
-       
+        private IQueryable<Person> Including =>
+        this.context.People
+            .Include(x => x.PhoneNumbers);
+
+        public async Task<Person> GetPersonByIdAsync(int id)
+        {
+            var person = await this.Including.FirstOrDefaultAsync(x => x.Id == id && x.DeleteDate == null);
+            return person;
+        }
+
     }
 }

@@ -16,7 +16,6 @@
     <Compile Remove="Features\People\Commands\AddRelatedPersonCommand.cs" />
     <Compile Remove="Features\People\Commands\DeletePersonCommand.cs" />
     <Compile Remove="Features\People\Commands\DeleteRelatedPersonCommand.cs" />
-    <Compile Remove="Features\People\Commands\UpdatePersonCommand.cs" />
     <Compile Remove="Features\People\Commands\UploadPhotoCommand.cs" />
     <Compile Remove="Features\People\Queries\GetPeopleQuery.cs" />
     <Compile Remove="Features\People\Queries\GetPersonByIdQuery.cs" />

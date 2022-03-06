@@ -10,5 +10,6 @@ namespace PersonDirectory.Core.Domain.Interfaces
 {
     public interface IPersonRepository:IRepository<Person>
     {
+        public Task<Person> GetPersonByIdAsync(int id);
     }
 }

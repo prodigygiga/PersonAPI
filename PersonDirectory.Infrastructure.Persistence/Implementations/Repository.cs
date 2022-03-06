@@ -17,18 +17,18 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations
             this.context = context;
         }
 
-
         public virtual Task Create(TEntity entity)
         {
             context.Set<TEntity>().Add(entity);
             return Task.CompletedTask;
         }
-        // read
-        public virtual TEntity Read(Guid id)
+        // read block
+        #region Read
+        public virtual TEntity Read(int id)
         {
             return context.Set<TEntity>().Find(id);
         }
-        public virtual async Task<TEntity> ReadAsync(Guid id)
+        public virtual async Task<TEntity> ReadAsync(int id)
         {
             return await context.Set<TEntity>().FindAsync(id);
         }
@@ -40,20 +40,24 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations
         {
             return await context.Set<TEntity>().ToListAsync();
         }
-        // update
+        #endregion
+        // update block
+        #region Update
         public virtual Task Update(TEntity entity)
         {
             context.Set<TEntity>().Update(entity);
             return Task.CompletedTask;
         }
-        public virtual Task Update(Guid id, TEntity entity)
+        public virtual Task Update(int id, TEntity entity)
         {
             var existing = context.Set<TEntity>().Find(id);
             this.context.Entry(existing).CurrentValues.SetValues(entity);
             return Task.CompletedTask;
         }
-        // delete
-        public virtual Task Delete(Guid id)
+        #endregion
+        // delete block
+        #region Delete
+        public virtual Task Delete(int id)
         {
             context.Set<TEntity>().Remove(this.Read(id));
             return Task.CompletedTask;
@@ -63,7 +67,9 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations
             context.Set<TEntity>().Remove(entity);
             return Task.CompletedTask;
         }
-        // check
+        #endregion
+        // check block
+        #region Check
         public virtual async Task<bool> CheckAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await context.Set<TEntity>().AnyAsync(predicate);
@@ -71,7 +77,8 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations
         public virtual async Task<bool> CheckAllAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await context.Set<TEntity>().AllAsync(predicate);
-        }
+        } 
+        #endregion
 
     }
 }
