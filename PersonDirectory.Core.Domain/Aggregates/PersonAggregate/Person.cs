@@ -52,6 +52,11 @@ namespace PersonDirectory.Core.Domain.Aggregates.PersonAggregate
             CityId = cityId;
             PicturePath = picturePath;
         }
+        public void SetPicturePath(string picturePath)
+        {
+            PicturePath = picturePath;
+            ModifiedDate = DateTime.Now;
+        }
         public void AddPhoneNumber(PhoneNumber phoneNumber)
         {
             phoneNumbers.Add(phoneNumber);

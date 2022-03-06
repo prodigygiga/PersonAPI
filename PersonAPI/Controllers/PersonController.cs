@@ -31,6 +31,12 @@ namespace PersonRegister.WebApi.Controllers
             await mediator.Send(request);
             return Ok();
         }
+        [HttpPost("UploadPicture")]
+        public async Task<IActionResult> AddEditPicture([FromForm] AddPersonPictureCommand request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
 
 
 
