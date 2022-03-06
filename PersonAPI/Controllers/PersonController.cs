@@ -25,6 +25,12 @@ namespace PersonRegister.WebApi.Controllers
             await mediator.Send(request);
             return Ok();
         }
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromForm] DeletePersonCommand request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
 
 
 
