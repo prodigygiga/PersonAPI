@@ -24,7 +24,7 @@ namespace PersonDirectory.Infrastructure.FileService
             var splittedFileName = fileName.Split('.');
             if(splittedFileName.Length != 2)
             {
-                throw new DataRejectedException("ფაილის დასახელება უნდა შეიცავდეს ინფორმაციას ფორმატზე");       
+                throw new DataRejectedException("ფაილის დასახელება უნდა შეიცავდეს მხოლოდ ერთ . -ს");       
             }
             var name = splittedFileName[0];
             var fileFormat = "." + splittedFileName[1];
