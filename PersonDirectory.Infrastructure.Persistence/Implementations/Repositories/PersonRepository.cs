@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PersonDirectory.Application.Commons;
+using PersonDirectory.Application.DTOs;
+using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
-using PersonDirectory.Core.Domain.Interfaces;
+using System.Data;
 
 namespace PersonDirectory.Infrastructure.Persistence.Implementations.Repositories
 {
@@ -42,6 +45,32 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations.Repositorie
             }
 
             return person;
+        }
+
+        public Task<List<PersonReportWithRelationsCountDTO>> GetPersonReport()
+        {
+            using (var cmd = context.Database.GetDbConnection().CreateCommand())
+            {
+                cmd.CommandText = @"
+                  select p.Id,p.FirstName,p.LastName,p.PrivateNumber,count(pr.Id) as Amount,pr.RelationType_Id as RelationTypeId from Person.People p
+                  left join Person.PersonRelation pr
+                  on p.Id = pr.PersonId or p.Id = pr.RelatedPersonId
+                  group by p.Id,p.FirstName,p.LastName,PrivateNumber,pr.RelationType_Id,p.DeleteDate,pr.DeleteDate
+                  having p.DeleteDate is null and pr.DeleteDate is null
+
+                ";
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandTimeout = 300;
+
+                if (cmd.Connection.State != ConnectionState.Open)
+                    cmd.Connection.Open();
+
+                using (var dataReader = cmd.ExecuteReader())
+                {
+                    var result = Functions.DataReaderMapToList<PersonReportWithRelationsCountDTO>(dataReader);
+                    return Task.FromResult(result);
+                }
+            }
         }
 
         public async Task<PersonRelation> GetRelationByPersonAndRelatedPersonIdAsync(int personId, int relatedPersonId)

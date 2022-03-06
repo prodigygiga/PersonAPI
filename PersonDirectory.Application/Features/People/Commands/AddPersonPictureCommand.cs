@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using PersonDirectory.Application.DTOs;
 using PersonDirectory.Application.Exceptions;
+using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Application.Interfaces.Contracts;
 using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 

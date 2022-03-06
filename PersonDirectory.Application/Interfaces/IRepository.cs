@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Domain.Core.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Domain.Core.Shared
+namespace PersonDirectory.Application.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : IAggregateRoot
     {

@@ -1,6 +1,4 @@
-﻿using PersonDirectory.Core.Domain.Interfaces;
-
-namespace Domain.Core.Shared
+﻿namespace PersonDirectory.Application.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {

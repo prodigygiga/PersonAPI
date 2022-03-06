@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PersonDirectory.Application.Features.People.Commands;
 using PersonDirectory.Application.Features.People.Queries;
+using PersonDirectory.Application.Features.Reports.Queries;
 using System.Threading.Tasks;
 
 namespace PersonRegister.WebApi.Controllers
@@ -54,6 +55,12 @@ namespace PersonRegister.WebApi.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var result = await mediator.Send(new GetPersonByIdQuery { Id=id});
+            return Ok(result);
+        }
+        [HttpGet("PeopleReport")]
+        public async Task<IActionResult> PeopleReportWithRelationTypesGroupedCount()
+        {
+            var result = await mediator.Send(new GetPeopleWIthRelatedTypesCountQuery());
             return Ok(result);
         }
 

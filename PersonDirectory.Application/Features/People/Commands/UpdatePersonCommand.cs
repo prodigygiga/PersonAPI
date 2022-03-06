@@ -3,6 +3,7 @@ using Domain.Core.Shared;
 using MediatR;
 using PersonDirectory.Application.DTOs;
 using PersonDirectory.Application.Exceptions;
+using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 
 namespace PersonDirectory.Application.Features.People.Commands

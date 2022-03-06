@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonDirectory.Core.Domain.Interfaces
+namespace PersonDirectory.Application.Interfaces
 {
     public interface ICityRepository:IRepository<City>
     {

@@ -1,5 +1,6 @@
 ﻿using Domain.Core.Shared;
 using Microsoft.EntityFrameworkCore;
+using PersonDirectory.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

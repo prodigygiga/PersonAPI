@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Core.Domain.Aggregates.CityAggregate;
-using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
-using PersonDirectory.Core.Domain.Interfaces;
 
 namespace PersonDirectory.Infrastructure.Persistence.Implementations.Repositories
 {

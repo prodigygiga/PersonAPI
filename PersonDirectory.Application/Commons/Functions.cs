@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Common;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -31,6 +33,29 @@ namespace PersonDirectory.Application.Commons
                 }
                 return sb.ToString();
             }
+        }
+
+        public static List<T> DataReaderMapToList<T>(DbDataReader dr)
+        {
+            List<T> list = new List<T>();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    var obj = Activator.CreateInstance<T>();
+                    foreach (PropertyInfo prop in obj.GetType().GetProperties())
+                    {
+                        if (!Equals(dr[prop.Name], DBNull.Value))
+                        {
+                            prop.SetValue(obj, dr[prop.Name], null);
+                        }
+                    }
+                    list.Add(obj);
+                }
+                return list;
+            }
+            return new List<T>();
         }
 
     }

@@ -1,5 +1,4 @@
-﻿using Domain.Core.Shared;
-using PersonDirectory.Core.Domain.Interfaces;
+﻿using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Infrastructure.Persistence.Implementations.Repositories;
 
 namespace PersonDirectory.Infrastructure.Persistence.Implementations

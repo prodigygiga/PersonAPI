@@ -1,7 +1,7 @@
-﻿using Domain.Core.Shared;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Infrastructure.Persistence.Implementations;
 
 namespace PersonDirectory.Infrastructure.Persistence
