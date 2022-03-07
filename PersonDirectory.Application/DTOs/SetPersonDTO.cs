@@ -10,25 +10,25 @@ namespace PersonDirectory.Application.DTOs
         {
             PhoneNumbers = new HashSet<PhoneNumberDTO>();
         }
-        [Required(ErrorMessage = "სახელი აუცილებელი ველია.")]
-        [MaxLength(50, ErrorMessage = "სიმბოლოების მაქსიმალური რაოდენობა არის 50.")]
-        [MinLength(2, ErrorMessage = "სიმბოლოების მინიმალური რაოდენობა არის 2.")]
-        [RegularExpression("^[ა-ჰ]*$|^[a-zA-Z]*$", ErrorMessage = "უნდა შეიცავდეს მხოლოდ ქართულ ან მხოლოდ ლათინურ ასოებს.")]
+        [Required(ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameRequired")]
+        [MaxLength(50, ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameSymbolMaxCount")]
+        [MinLength(2, ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameSymbolMinCount")]
+        [RegularExpression("^[ა-ჰ]*$|^[a-zA-Z]*$", ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameOnlyGeorgianLatin")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "გვარი აუცილებელი ველია.")]
-        [MaxLength(50, ErrorMessage = "სიმბოლოების მაქსიმალური რაოდენობა არის 50.")]
-        [MinLength(2, ErrorMessage = "სიმბოლოების მინიმალური რაოდენობა არის 2.")]
-        [RegularExpression("^[ა-ჰ]*$|^[a-zA-Z]*$", ErrorMessage = "უნდა შეიცავდეს მხოლოდ ქართულ ან მხოლოდ ლათინურ ასოებს.")]
+        [Required(ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "LastNameRequired")]
+        [MaxLength(50, ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameSymbolMaxCount")]
+        [MinLength(2, ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameSymbolMinCount")]
+        [RegularExpression("^[ა-ჰ]*$|^[a-zA-Z]*$", ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "NameOnlyGeorgianLatin")]
         public string LastName { get; set; }
         public int GenderId { get; set; }
 
-        [StringLength(11, ErrorMessage = "პირადი ნომერი უნდა შეიცავდეს 11 სიმბოლოს.")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "პირადი ნომერი უნდა შედგებოდეს მხოლოდ ციფრებისაგან.")]
+        [StringLength(11, ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "PrivateNumberLength")]
+        [RegularExpression("^[0-9]*$", ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "PrivateNumberOnlyIntegers")]
         public string PrivateNumber { get; set; }
 
-        [Required(ErrorMessage = "დაბადების თარიღის შევსება აუცილებელი ველია.")]
-        [MinimumAge(18, ErrorMessage = "ფიზიკური პირი უნდა იყოს მინიმუმ 18 წლის.")]
+        [Required(ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "BirthDateRequired")]
+        [MinimumAge(18, ErrorMessageResourceType = (typeof(Resources.ErrorTexts)), ErrorMessageResourceName = "PersonAgeMustBeGreater18")]
         public DateTime BirthDate { get; set; }
         public int CityId { get; set; }
         public ICollection<PhoneNumberDTO> PhoneNumbers { get; set; }
