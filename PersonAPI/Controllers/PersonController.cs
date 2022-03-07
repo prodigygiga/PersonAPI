@@ -1,16 +1,16 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PersonDirectory.Application.DTOs.Filters;
 using PersonDirectory.Application.Features.People.Commands;
 using PersonDirectory.Application.Features.People.Queries;
 using PersonDirectory.Application.Features.Reports.Queries;
+using PersonDirectory.Presentation.WebApi.ActionFilters;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace PersonRegister.WebApi.Controllers
 {
     [Route("api/[controller]")]
-
+    [InvalidModelActionFilter]
     public class PersonController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -21,7 +21,7 @@ namespace PersonRegister.WebApi.Controllers
         {
 
             await mediator.Send(request,token);
-            return Created("", request);
+            return Ok();
         }
         [HttpPut]
         public async Task<IActionResult> Update([FromForm] UpdatePersonCommand request)

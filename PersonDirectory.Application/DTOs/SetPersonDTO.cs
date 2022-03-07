@@ -1,4 +1,5 @@
-﻿using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
+﻿using PersonDirectory.Application.DTOs.Attributes;
+using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 using System.ComponentModel.DataAnnotations;
 
 namespace PersonDirectory.Application.DTOs
@@ -27,6 +28,7 @@ namespace PersonDirectory.Application.DTOs
         public string PrivateNumber { get; set; }
 
         [Required(ErrorMessage = "დაბადების თარიღის შევსება აუცილებელი ველია.")]
+        [MinimumAge(18, ErrorMessage = "ფიზიკური პირი უნდა იყოს მინიმუმ 18 წლის.")]
         public DateTime BirthDate { get; set; }
         public int CityId { get; set; }
         public ICollection<PhoneNumberDTO> PhoneNumbers { get; set; }

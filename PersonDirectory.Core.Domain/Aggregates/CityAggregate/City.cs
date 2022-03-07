@@ -14,5 +14,11 @@ namespace PersonDirectory.Core.Domain.Aggregates.CityAggregate
         {
             this.Name = Name;
         }
+        public City(int id, string Name,DateTime CreateDate)
+        {
+            this.Id = id;
+            this.Name = Name;
+            this.CreateDate = CreateDate;
+        }
     }
 }
