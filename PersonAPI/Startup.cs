@@ -29,6 +29,7 @@ namespace PersonDirectory.Presentation.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PersonDirectory", Version = "v1" });
             });
+            services.ConfigureCors();
             services.AddApplicatonLayer(Configuration);
             services.AddPersistenceLayer(Configuration);
             services.AddFileServiceLayer(Configuration);
@@ -43,6 +44,7 @@ namespace PersonDirectory.Presentation.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonDirectory v1"));
             }
+            app.UseCors("AnyPolicy");
             app.UseMiddleware<ExceptionHandler>();
             app.UseHttpsRedirection();
 

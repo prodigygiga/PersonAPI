@@ -55,6 +55,11 @@ namespace PersonDirectory.Presentation.WebApi.Middlewares
                     logger.LogWarning(exception.Message);
                     statusCode = (int)HttpStatusCode.BadRequest;
                     break;
+                case OperationCanceledException:
+                    logger.LogWarning(exception, nameof(OperationCanceledException));
+                    exception = new Exception("Operation Is Canceled.");
+                    titleText = "Operation Is Canceled.";
+                    break;
                 case Exception _:
                     logger.LogError(exception, exception.Message);
                     if (env.IsProduction()) exception = new Exception("Internal Server Error");

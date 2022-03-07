@@ -8,7 +8,7 @@ using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 
 namespace PersonDirectory.Application.Features.People.Commands
 {
-    public class DeletePersonCommand:IRequest
+    public class DeletePersonCommand : IRequest
     {
         public int Id { get; set; }
     }
@@ -26,7 +26,8 @@ namespace PersonDirectory.Application.Features.People.Commands
             {
                 throw new DataNotFoundException("პიროვნება ვერ მოიძებნა!");
             }
-           
+
+            cancellationToken.ThrowIfCancellationRequested();
 
             personInDb.DeleteDate = DateTime.Now;
             foreach (var phNum in personInDb.PhoneNumbers)

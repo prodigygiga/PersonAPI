@@ -33,8 +33,13 @@ namespace PersonDirectory.Application.Features.People.Commands
             {
                 person.AddPhoneNumber(new PhoneNumber(phNum.Number, Enumeration.FromValue<PhoneNumberType>(phNum.NumberTypeId),person.Id));
             }
+
+
+
             await uow.PersonRepository.Create(person);
             await uow.SaveAsync();
+
+
             return Unit.Value;
 
 

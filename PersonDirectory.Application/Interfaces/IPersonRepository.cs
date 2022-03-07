@@ -1,5 +1,7 @@
 ﻿using Domain.Core.Shared;
+using PersonDirectory.Application.Commons;
 using PersonDirectory.Application.DTOs;
+using PersonDirectory.Application.DTOs.Filters;
 using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,8 @@ namespace PersonDirectory.Application.Interfaces
         public Task AddRelatedPerson(PersonRelation relation);
         public Task DeleteRelation(PersonRelation relation);
         public Task<List<PersonReportWithRelationsCountDTO>> GetPersonReport();
+        public Task<Pagination<Person>> GetPeopleFiltered(PersonFilter personFilter,int currentPage, int pageSize);
+        public Task<Pagination<Person>> GetPeopleFilteredQuick(PersonFilter personFilter, int currentPage, int pageSize);
 
     }
 }

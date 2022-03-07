@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonDirectory.Application.Commons;
 using PersonDirectory.Application.DTOs;
+using PersonDirectory.Application.DTOs.Filters;
 using PersonDirectory.Application.Interfaces;
 using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 using System.Data;
@@ -31,6 +32,31 @@ namespace PersonDirectory.Infrastructure.Persistence.Implementations.Repositorie
         {
             context.PersonRelations.Update(relation);
             return Task.CompletedTask;
+        }
+
+        public Task<Pagination<Person>> GetPeopleFiltered(PersonFilter personFilter, int currentPage, int pageSize)
+        {
+            var people = this.Including.Where(x =>
+            (personFilter.Id == 0 || x.Id == personFilter.Id) &&
+            (string.IsNullOrEmpty(personFilter.FirstName) || x.FirstName.Contains(personFilter.FirstName)) &&
+            (string.IsNullOrEmpty(personFilter.LastName) || x.LastName.Contains(personFilter.LastName)) &&
+            (string.IsNullOrEmpty(personFilter.PrivateNumber) || x.PrivateNumber.StartsWith(personFilter.PrivateNumber)) &&
+            (personFilter.CityId == 0 || x.CityId == personFilter.CityId) &&
+            (string.IsNullOrEmpty(personFilter.City) || x.City.Name == personFilter.City) &&
+            (personFilter.BirthDate == null || x.BirthDate == personFilter.BirthDate) 
+            );
+
+            return Pagination<Person>.CreateAsync(people, currentPage, pageSize);
+        }
+        public Task<Pagination<Person>> GetPeopleFilteredQuick(PersonFilter personFilter, int currentPage, int pageSize)
+        {
+            var people = this.Including.Where(x =>
+            (string.IsNullOrEmpty(personFilter.FirstName) || x.FirstName.Contains(personFilter.FirstName)) &&
+            (string.IsNullOrEmpty(personFilter.LastName) || x.LastName.Contains(personFilter.LastName)) &&
+            (string.IsNullOrEmpty(personFilter.PrivateNumber) || x.PrivateNumber.StartsWith(personFilter.PrivateNumber)) 
+            );
+
+            return Pagination<Person>.CreateAsync(people, currentPage, pageSize);
         }
 
         public async Task<Person> GetPersonByIdAsync(int id)

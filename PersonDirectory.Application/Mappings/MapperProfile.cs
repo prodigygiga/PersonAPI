@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PersonDirectory.Application.Commons;
 using PersonDirectory.Application.DTOs;
 using PersonDirectory.Application.Features.People.Commands;
 using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
@@ -12,6 +13,8 @@ namespace PersonDirectory.Application.Mappings
             CreateMap<PhoneNumberDTO, PhoneNumber>();
 
             CreateMap<AddPersonCommand, Person>();
+
+            CreateMap(typeof(Pagination<>), typeof(Pagination<>));
 
             //CreateMap<UpdatePersonRequest, Person>();
 

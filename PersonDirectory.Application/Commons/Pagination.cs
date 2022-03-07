@@ -7,21 +7,21 @@ namespace PersonDirectory.Application.Commons
 {
     public class Pagination<T>
     {
-        public List<T> Items { get; }
+        public List<T> Items { get; private set; }
 
-        public int PageIndex { get; }
-        public int PageSize { get; }
+        public int CurrentPage { get; private set; }
+        public int PageSize { get; private set; }
 
-        public int TotalPages { get; }
-        public int TotalCount { get; }
+        public int TotalPages { get; private set; }
+        public int TotalCount { get; private set; }
 
-        public bool HasPreviousPage => PageIndex > 1;
-        public bool HasNextPage => PageIndex < TotalPages;
+        public bool HasPreviousPage => CurrentPage > 1;
+        public bool HasNextPage => CurrentPage < TotalPages;
 
-
+        public Pagination() { }
         public Pagination(List<T> items, int totalCount, int pageIndex, int pageSize)
         {
-            PageIndex = pageIndex;
+            CurrentPage = pageIndex;
             PageSize = pageSize;
             TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
             TotalCount = totalCount;
