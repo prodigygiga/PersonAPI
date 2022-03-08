@@ -20,11 +20,7 @@ namespace PersonDirectory.Infrastructure.Persistence.Configurations
                 .Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 
-            builder.HasData(
-                new City(1, "ქუთაისი",DateTime.Now),
-                new City (2,"თბილისი", DateTime.Now),
-                new City(3,"ბათუმი", DateTime.Now)
-                );
+            
         }
     }
 }

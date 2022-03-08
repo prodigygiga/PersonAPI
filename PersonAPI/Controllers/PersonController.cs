@@ -17,11 +17,10 @@ namespace PersonRegister.WebApi.Controllers
         public PersonController(IMediator mediator) => this.mediator = mediator;
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] AddPersonCommand request,CancellationToken token)
+        public async Task<ActionResult> Create([FromForm] AddPersonCommand request,CancellationToken token)
         {
-
-            await mediator.Send(request,token);
-            return Ok();
+            var result = await mediator.Send(request,token);
+            return CreatedAtRoute("GetPersonById", new { id = result }, result);
         }
         [HttpPut]
         public async Task<IActionResult> Update([FromForm] UpdatePersonCommand request)
@@ -33,7 +32,7 @@ namespace PersonRegister.WebApi.Controllers
         public async Task<IActionResult> Delete([FromForm] DeletePersonCommand request, CancellationToken token)
         {
             await mediator.Send(request,token);
-            return Ok();
+            return NoContent();
         }
         [HttpPost("UploadPicture")]
         public async Task<IActionResult> AddEditPicture([FromForm] AddPersonPictureCommand request)
@@ -45,15 +44,15 @@ namespace PersonRegister.WebApi.Controllers
         public async Task<IActionResult> AddRelation([FromForm] AddPersonRelationCommand request)
         {
             await mediator.Send(request);
-            return Ok();
+            return Created("",request);
         }
         [HttpDelete("Relation")]
         public async Task<IActionResult> RemoveRelation([FromForm] DeletePersonRelationCommand request)
         {
             await mediator.Send(request);
-            return Ok();
+            return NoContent();
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name ="GetPersonById")]
         public async Task<IActionResult> Get(int id)
         {
             var result = await mediator.Send(new GetPersonByIdQuery { Id=id});

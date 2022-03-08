@@ -7,17 +7,17 @@ using PersonDirectory.Core.Domain.Aggregates.PersonAggregate;
 
 namespace PersonDirectory.Application.Features.People.Commands
 {
-    public class AddPersonCommand : SetPersonDTO, IRequest
+    public class AddPersonCommand : SetPersonDTO, IRequest<int>
     {
     }
-    public class AddPersonCommandHandler : IRequestHandler<AddPersonCommand>
+    public class AddPersonCommandHandler : IRequestHandler<AddPersonCommand,int>
     {
         private readonly IUnitOfWork uow;
         private readonly IMapper mapper;
 
         public AddPersonCommandHandler(IUnitOfWork uow, IMapper mapper) => (this.uow, this.mapper) = (uow, mapper);
 
-        public async Task<Unit> Handle(AddPersonCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(AddPersonCommand request, CancellationToken cancellationToken)
         {
             var gender = Enumeration.FromValue<Gender>(request.GenderId);
             var person = new Person(
@@ -38,9 +38,9 @@ namespace PersonDirectory.Application.Features.People.Commands
 
             await uow.PersonRepository.Create(person);
             await uow.SaveAsync();
+            
 
-
-            return Unit.Value;
+            return person.Id;
 
 
         }

@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using PersonDirectory.Application;
 using PersonDirectory.Infrastructure.FileService;
 using PersonDirectory.Infrastructure.Persistence;
+using PersonDirectory.Infrastructure.Persistence.Extensions;
 using PersonDirectory.Presentation.WebApi.Middlewares;
 
 namespace PersonDirectory.Presentation.WebApi
@@ -55,7 +56,7 @@ namespace PersonDirectory.Presentation.WebApi
             var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
                 .AddSupportedCultures(supportedCultures)
                 .AddSupportedUICultures(supportedCultures);
-
+            app.PrepareDbPopulation();
             app.UseRequestLocalization(localizationOptions);
             app.UseMiddleware<ExceptionHandler>();
             app.UseHttpsRedirection();
