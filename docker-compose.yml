@@ -3,7 +3,7 @@ services:
     person-api:
         build: .
         ports:
-            - "5001:80"
+            - "5000:80"
         depends_on:
             - db
     db:
